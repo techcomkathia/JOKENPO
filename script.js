@@ -18,7 +18,12 @@ let resultadoFinal = document.getElementById('resultado')
 
 //contagem dos pontos no document
 let contagemPontosComputador = document.getElementById('pontosComputador')
-let contagemPontosJogador = document.getElementById('pontosJogador')
+let contagemPontosJogador = document.getElementById('pontosUsuario')
+
+//BOTÕES JOGADA USUÁRIO
+let btnPedra = document.getElementsByTagName('button')[0]
+let btnPapel = document.getElementsByTagName('button')[1]
+let btnTesoura = document.getElementsByTagName('button')[2]
 
 //variáveis globais para escolha do usuário e do computador
 let escolhaJogador= {}
@@ -58,8 +63,8 @@ function montarTela(){
     pJogador.innerHTML = ` Você escolheu ${escolhaJogador.nome}`
     pComputador.innerHTML = `O Computador escolheu ${escolhaComputador.nome}`
 
-    contagemPontosComputador = pontosComputador
-    contagemPontosJogador = pontosJogador
+    contagemPontosComputador.innerHTML = pontosComputador
+    contagemPontosJogador.innerHTML = pontosJogador
 
     resultadoFinal.innerHTML= escolhaJogador[escolhaComputador.nome]
 
@@ -84,5 +89,8 @@ function jogar(num){
     montarTela()
 }
 
+//adição do escutadores de eventos aos botões, com o evento click
 
-jogar(1)
+btnPapel.addEventListener('click', ()=> jogar(2))
+btnPedra.addEventListener('click', ()=> jogar(1))
+btnTesoura.addEventListener('click', ()=> jogar(3))
